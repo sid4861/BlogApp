@@ -22,19 +22,23 @@ var blogPostSchema = new mongoose.Schema({
 
 var BlogPost = mongoose.model("BlogPost", blogPostSchema);
 
-BlogPost.create({title : "test blog", 
-image : "https://cdn2.howtostartanllc.com/images/business-ideas/business-idea-images/Campground.webp",
-body : "sample post"}, function(err, post){
+// BlogPost.create({title : "test blog", 
+// image : "https://cdn2.howtostartanllc.com/images/business-ideas/business-idea-images/Campground.webp",
+// body : "sample post"}, function(err, post){
 
-    if(err){
-        console.log(err);
-    }
-    else{
-        console.log("created");
-    }
-});
+//     if(err){
+//         console.log(err);
+//     }
+//     else{
+//         console.log("created");
+//     }
+// });
 
 
 //routes
+
+app.get("/blogs", function(req, res){
+
+});
 
 app.listen(3000);
