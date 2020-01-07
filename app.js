@@ -41,6 +41,7 @@ app.get("/", function(req, res){
 
 });
 
+//index route
 
 app.get("/blogs", function(req, res){
 BlogPost.find({}, function(err, posts){
@@ -51,6 +52,29 @@ BlogPost.find({}, function(err, posts){
         res.render("index.ejs", {posts : posts});
     }
 });
+});
+
+//new route
+
+app.get("/blogs/new", function(req, res){
+    res.render("new.ejs");
+});
+
+//create route called within new route
+
+app.post("/blogs", function(req, res){
+    console.log(req.body.blog);
+    BlogPost.create(req.body.blog, function(err, newPost){
+        if(err){
+            res.render("new.ejs");
+        }
+        else{
+            console.log("created");
+            res.redirect("/");
+        }
+    });
+
+    
 });
 
 app.listen(3000);
