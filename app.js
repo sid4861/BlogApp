@@ -36,9 +36,21 @@ var BlogPost = mongoose.model("BlogPost", blogPostSchema);
 
 
 //routes
+app.get("/", function(req, res){
+    res.redirect("/blogs");
+
+});
+
 
 app.get("/blogs", function(req, res){
-
+BlogPost.find({}, function(err, posts){
+    if(err){
+        console.log(err);
+    }
+    else{
+        res.render("index.ejs", {posts : posts});
+    }
+});
 });
 
 app.listen(3000);
