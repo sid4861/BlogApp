@@ -81,7 +81,17 @@ app.post("/blogs", function(req, res){
 //show route, show one blog post
 
 app.get("/blogs/:id", function(req, res){
-    res.render("show.ejs");
+
+    BlogPost.findById(req.params.id, function(err, foundBlog){
+
+        if(err){
+            res.redirect("/blogs");
+        }
+
+        else{
+            res.render("show.ejs", {foundBlog : foundBlog});
+        }
+    });
 });
 
 app.listen(3000);

@@ -1,1 +1,24 @@
-<h1>show page</h1>
+<%- include("partials/header.ejs") %>
+
+<div class="ui main container segment">
+    <h1 class="ui center aligned header"><%= foundBlog.title %></h1>
+    <div class="ui top attached">
+
+        <div class="item">
+
+            <img class="ui centered rounded image" src="<%=foundBlog.image%>" alt="">
+
+            <div class="content">
+                <span><%=foundBlog.createdDate.toDateString() %></span>
+            </div>
+            <div class="description">
+                <p><%- foundBlog.body %></p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<%- include("partials/footer.ejs") %>
