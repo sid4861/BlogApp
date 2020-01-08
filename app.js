@@ -60,7 +60,7 @@ app.get("/blogs/new", function(req, res){
     res.render("new.ejs");
 });
 
-//create route called within new route
+//create route, called within new route
 
 app.post("/blogs", function(req, res){
     console.log(req.body.blog);
@@ -75,6 +75,13 @@ app.post("/blogs", function(req, res){
     });
 
     
+});
+
+
+//show route, show one blog post
+
+app.get("/blogs/:id", function(req, res){
+    res.render("show.ejs");
 });
 
 app.listen(3000);
