@@ -15,6 +15,12 @@
                 <p><%- foundBlog.body %></p>
             </div>
 
+            <a class = "ui basic orange button" href="/blogs/<%= foundBlog._id %>/edit">Edit</a>
+
+            <form id="delete" action="/blogs/<%= foundBlog._id %>?_method=DELETE" method="POST">
+                <button class="ui red basic button">Delete</button>
+            </form>
+
         </div>
 
     </div>
