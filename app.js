@@ -2,7 +2,9 @@ var express = require("express");
 app = express();
 app.use(express.static("public"));
 
+var methodOverride = require("method-override");
 
+app.use(methodOverride("_method"));
 var ejs = require("ejs");
 
 var mongoose = require("mongoose");
@@ -94,4 +96,35 @@ app.get("/blogs/:id", function(req, res){
     });
 });
 
+
+//edit route
+
+app.get("/blogs/:id/edit", function(req, res){
+    BlogPost.findById(req.params.id, function(err, foundBlog){
+        if(err){
+            console.log(err);
+            res.redirect("/blogs");
+        }
+
+        else{
+            res.render("edit.ejs", {foundBlog : foundBlog});
+        }
+    });
+    
+});
+
+//update route
+
+app.put("/blogs/:id", function(req, res){
+    BlogPost.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
+        if(err){
+            console.log(err);
+            res.redirect("/blogs");
+        }
+
+        else{
+              res.redirect("/blogs/")  
+        }
+    });
+});
 app.listen(3000);
