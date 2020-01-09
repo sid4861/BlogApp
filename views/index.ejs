@@ -1,17 +1,36 @@
 <%- include("partials/header.ejs") %>
+<div class="ui main text container">
+    <div class="ui huge header">Blog Posts</div>
+    <div class="ui top attached segment">
+        <div class="ui divided items">
+            <% posts.forEach(function(post){ %>
 
+            <div class="item">
+                <div class="image">
+                    <img src="<%=post.image%>" alt=""></div>
+                <div class="content">
+                    <a class="header" href="/blogs/<%= post._id %>"><%=post.title%></a>
+                    <div class="meta">
+                        <span><%=post.createdDate.toDateString()%></span>
+                    </div>
+                    <div class="description">
+                        <p><%=post.body%>....</p>
+                    </div>
+
+                    <div class="extra">
+                        <a href="/blogs/<%= post._id %>" class="ui violet floated basic button">
+                            Read More
+                            <i class="right chevron icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <%});%>
+        </div>
+    </div>
+</div>
 <h1>Index Page</h1>
 
-<% posts.forEach(function(post){ %>
-    
-        <div>
-            <h2><%=post.title%></h2>
-            <img src="<%=post.image%>" alt="">
-            <p><%=post.body%>....</p>
-            <span><%=post.createdDate%></span>
-            <a href="/blogs/<%= post._id %>" class="ui violet big basic button">Read More</a>
 
-        </div>
-    
-<%});%>
 <%- include("partials/footer.ejs") %>
